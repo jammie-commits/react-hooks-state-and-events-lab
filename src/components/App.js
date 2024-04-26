@@ -5,21 +5,21 @@ import itemData from "../data/items";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+
+  function onDarkModeClick() {
+    setIsDarkMode((isDarkMode) => !isDarkMode);
   }
-   
-  const appClass = isDarkMode ? "App dark" : "App light";
 
   return (
-    <div className={appClass}>
+    <div className={"App " + (isDarkMode ? "dark" : "light")}>
       <header>
         <h2>Shopster</h2>
-        <button onClick={toggleDarkMode}>Dark Mode</button>
+        <button onClick={onDarkModeClick}>
+          {isDarkMode ? "Dark" : "Light"} Mode
+        </button>
       </header>
       <ShoppingList items={itemData} />
     </div>
   );
 }
-
 export default App;
